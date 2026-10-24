@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capítulo 26 — Contagem e possibilidades | Professora Samanta</title>
+<style>
+:root{--navy:#153b59;--blue:#2377a8;--teal:#2a8c83;--mint:#eaf7f3;--gold:#f0bd55;--ink:#20313d;--muted:#647581;--line:#dce7eb;--paper:#fff;--bg:#f3f7f8;--red:#b94a48}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--blue)}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;box-shadow:0 3px 14px #163b5910}.head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}.brand{display:flex;align-items:center;gap:16px}.brand img{width:150px;max-height:66px;object-fit:contain}.fallback{display:none;border:2px solid var(--teal);border-radius:10px;padding:8px 12px;color:var(--navy);font-weight:900;line-height:1.2}.brand-title{border-left:1px solid var(--line);padding-left:16px}.brand-title strong{display:block;color:var(--navy);font-size:1.05rem}.brand-title span{font-size:.82rem;color:var(--muted)}nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}nav a{text-decoration:none;font-size:.86rem;font-weight:700;padding:7px 10px;border-radius:999px}nav a:hover{background:var(--mint)}
+.hero{margin:28px 0;background:linear-gradient(120deg,#153b59,#2377a8);color:white;padding:clamp(24px,5vw,48px);border-radius:24px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:260px;height:260px;border:28px solid #ffffff15;border-radius:50%;right:-55px;top:-80px}.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;color:#bce9df}.hero h1{font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.12;margin:12px 0}.hero p{max-width:760px;color:#e3f1f7}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.chip{background:#ffffff1b;border:1px solid #ffffff35;border-radius:999px;padding:7px 12px;font-size:.88rem}
+section.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,30px);margin:22px 0;box-shadow:0 5px 18px #153b5907}h2{color:var(--navy);font-size:1.65rem;line-height:1.25;margin:0 0 14px}h3{color:var(--navy);margin:0 0 8px}p{margin:8px 0 14px}.intro{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.concept{border:1px solid var(--line);border-radius:15px;padding:18px;background:#fcfefe}.concept .num{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--mint);color:var(--teal);font-weight:900;border-radius:10px;margin-bottom:8px}
+.formula{background:#edf6fb;border-left:5px solid var(--blue);border-radius:10px;padding:14px 16px;margin:14px 0;font-weight:700}.formula big{font-size:1.4rem;color:var(--navy)}.note{background:#fff7e5;border-left:5px solid var(--gold);padding:13px 16px;border-radius:10px;margin:14px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{padding:11px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#eaf4f8;color:var(--navy)}tbody tr:nth-child(even){background:#fbfdfd}
+.visuals{display:grid;grid-template-columns:1fr 1fr;gap:16px}.visual{border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;background:#fbfdfd}.tree{display:flex;flex-direction:column;align-items:center;gap:7px;font-weight:800;color:var(--navy)}.node{background:#e9f5f2;border:1px solid #abd7ce;border-radius:8px;padding:6px 12px;min-width:74px}.branches{display:flex;justify-content:center;gap:10px;position:relative;width:100%}.branches:before{content:"";position:absolute;top:-7px;left:25%;right:25%;border-top:2px solid #80bdb3}.branches .node{font-size:.85rem}.outcomes{display:flex;flex-wrap:wrap;justify-content:center;gap:7px}.outcomes span{background:#eef4fb;border:1px solid #cbdceb;padding:6px 9px;border-radius:8px;font-weight:800}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.progress{height:9px;background:#e9eff2;border-radius:99px;overflow:hidden;flex:1;min-width:130px}.progress div{height:100%;width:0;background:var(--teal);transition:width .25s}.q-card{border:1px solid var(--line);border-radius:15px;padding:18px;margin:14px 0;background:#fff}.q-title{font-weight:800;color:var(--navy);margin-bottom:10px}.topic-tag{font-size:.75rem;background:#eaf7f3;color:#226e66;border-radius:999px;padding:4px 8px;display:inline-block;margin-bottom:8px;font-weight:800}.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}.option:hover{border-color:#80bdb3;background:#f8fcfb}.option input{margin-top:5px;accent-color:var(--teal)}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.btn{border:0;border-radius:10px;padding:12px 17px;font-weight:800;cursor:pointer;font-size:.95rem}.primary{background:var(--navy);color:#fff}.secondary{background:#e9f2f5;color:var(--navy)}.btn:hover{filter:brightness(.96)}.results{display:none}.results-grid{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}.pie{width:190px;height:190px;border-radius:50%;margin:auto;background:conic-gradient(var(--teal) 0 0deg,#e5ebef 0deg 360deg);position:relative}.pie:after{content:"";position:absolute;inset:35px;background:#fff;border-radius:50%}.pie-label{position:absolute;inset:0;display:grid;place-items:center;z-index:1;font-size:1.6rem;font-weight:900;color:var(--navy)}.metric{font-size:1.5rem;font-weight:900;color:var(--navy)}.bar-row{display:grid;grid-template-columns:minmax(110px,1fr) 3fr 50px;gap:10px;align-items:center;margin:10px 0;font-size:.9rem}.bar{height:11px;background:#e8eef0;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:var(--teal);width:0}.study-item{padding:13px 15px;background:#f5faf8;border-left:4px solid var(--teal);border-radius:8px;margin:10px 0}.answer-key{display:none}.answer{border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden}.answer summary{padding:13px 15px;cursor:pointer;font-weight:800;background:#f8fbfc;color:var(--navy)}.answer-body{padding:14px 16px;border-top:1px solid var(--line)}.correct{color:#18764c;font-weight:800}.wrong{color:var(--red);font-weight:800}.small{font-size:.86rem;color:var(--muted)}footer{margin-top:30px;background:var(--navy);color:#eaf3f7;text-align:center;padding:28px 16px}
+@media(max-width:760px){.head{align-items:flex-start;flex-direction:column}.brand{align-items:flex-start}.brand img{width:120px}.brand-title{padding-left:12px}nav{justify-content:flex-start}.grid,.visuals,.results-grid{grid-template-columns:1fr}.hero{border-radius:17px}.bar-row{grid-template-columns:1fr 2fr 42px}th,td{padding:8px;font-size:.9rem}}
+@media print{header{position:static}.buttons,nav{display:none}.panel{break-inside:avoid;box-shadow:none}.results{display:block!important}.answer-key{display:block!important}body{background:white}}
+</style>
+</head>
+<body>
+<header><div class="wrap head">
+  <div class="brand">
+    <img src="https://samanta-preparatorios.github.io/Aula-1-de-Ciencias/Logo%20preparatorio1.jpeg" alt="Logo Curso Preparatório Professora Samanta" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="fallback">CURSO PREPARATÓRIO<br>PROFESSORA SAMANTA</div>
+    <div class="brand-title"><strong>Matemática • Capítulo 26</strong><span>Contagem, possibilidades e probabilidade</span></div>
+  </div>
+  <nav aria-label="Navegação principal">
+    <a href="#revisao">Revisão</a><a href="#exemplos">Apoio visual</a><a href="#questionario">Questionário</a><a href="#resultado">Desempenho</a><a href="#gabarito">Gabarito</a>
+  </nav>
+</div></header>
+<main class="wrap">
+<section class="hero">
+  <span class="eyebrow">Curso Preparatório Professora Samanta</span>
+  <h1>Contagem e possibilidades</h1>
+  <p>Material de estudo visual com conceitos essenciais, exemplos resolvidos, questionário interativo e análise automática para identificar os conteúdos que precisam de mais atenção.</p>
+  <div class="chips"><span class="chip">Árvore de possibilidades</span><span class="chip">Princípio Fundamental da Contagem</span><span class="chip">Espaço amostral</span><span class="chip">Probabilidade</span></div>
+</section>
+
+<section class="panel" id="revisao">
+<h2>1. Revisão dos conteúdos</h2>
+<p class="intro">Leia os conceitos e observe os exemplos antes de responder ao questionário. O capítulo trabalha situações de contagem organizadas em etapas e a probabilidade de eventos simples.</p>
+<div class="grid">
+ <article class="concept"><span class="num">1</span><h3>Possibilidades</h3><p>São as diferentes opções ou resultados que podem ocorrer em uma situação. Por exemplo, ao lançar uma moeda, há duas possibilidades: cara (C) ou coroa (K).</p></article>
+ <article class="concept"><span class="num">2</span><h3>Espaço amostral</h3><p>É o conjunto de todos os resultados possíveis de um experimento. Em um lançamento de moeda: <strong>S = {C, K}</strong>.</p></article>
+ <article class="concept"><span class="num">3</span><h3>Árvore de possibilidades</h3><p>É um esquema de ramificações que organiza as escolhas etapa por etapa. Ajuda a visualizar e listar os resultados sem esquecer combinações.</p></article>
+ <article class="concept"><span class="num">4</span><h3>Princípio Fundamental da Contagem (PFC)</h3><p>Quando uma atividade ocorre em etapas sucessivas, multiplicamos o número de possibilidades de cada etapa para encontrar o total, considerando as condições informadas.</p><div class="formula"><big>Total = a × b × c × …</big></div></article>
+ <article class="concept"><span class="num">5</span><h3>Possibilidade × probabilidade</h3><p>Possibilidade trata das opções ou resultados que podem ocorrer. Probabilidade mede a chance de um evento acontecer.</p></article>
+ <article class="concept"><span class="num">6</span><h3>Probabilidade de um evento</h3><p>Quando todos os resultados são igualmente prováveis, divide-se o número de resultados favoráveis pelo número total de resultados possíveis.</p><div class="formula">P(evento) = resultados favoráveis ÷ resultados possíveis</div></article>
+</div>
+<div class="note"><strong>Atenção:</strong> antes de multiplicar, identifique quantas etapas existem e quantas opções há em cada uma. Se a questão pedir a lista de resultados, uma árvore ou o espaço amostral pode ser mais esclarecedor do que apenas calcular o total.</div>
+</section>
+
+<section class="panel" id="exemplos">
+<h2>2. Apoio visual: árvore, espaço amostral e tabela</h2>
+<div class="visuals">
+ <div class="visual"><h3>Árvore de possibilidades</h3><p class="small">Lançamento de uma moeda duas vezes</p>
+  <div class="tree"><div class="node">1º lançamento</div><div class="branches"><span class="node">C</span><span class="node">K</span></div><div style="font-size:1.4rem;color:#80bdb3">↙　↘　↙　↘</div><div class="branches"><span class="node">CC</span><span class="node">CK</span><span class="node">KC</span><span class="node">KK</span></div></div>
+  <p>Há <strong>2 × 2 = 4</strong> resultados possíveis.</p>
+ </div>
+ <div class="visual"><h3>Espaço amostral</h3><p class="small">Duas jogadas de moeda</p>
+  <div class="outcomes"><span>CC</span><span>CK</span><span>KC</span><span>KK</span></div>
+  <p>CC significa cara nas duas jogadas; CK, cara e depois coroa; KC, coroa e depois cara; KK, coroa nas duas jogadas.</p>
+ </div>
+</div>
+<h3 style="margin-top:22px">Exemplo de aplicação do PFC</h3>
+<table><thead><tr><th>Situação</th><th>Etapas</th><th>Cálculo</th><th>Total</th></tr></thead><tbody>
+<tr><td>Montar um conjunto</td><td>3 blusas e 2 saias</td><td>3 × 2</td><td><strong>6 conjuntos</strong></td></tr>
+<tr><td>Refeição</td><td>3 sanduíches, 4 sucos e 2 sobremesas</td><td>3 × 4 × 2</td><td><strong>24 refeições</strong></td></tr>
+<tr><td>Placa</td><td>2 letras, cada uma com 5 opções, e 1 algarismo com 4 opções</td><td>5 × 5 × 4</td><td><strong>100 placas</strong></td></tr>
+</tbody></table>
+<h3>Exemplo de probabilidade</h3>
+<p>Um dado comum tem seis resultados igualmente prováveis: {1, 2, 3, 4, 5, 6}. Para obter um número maior que 4, os resultados favoráveis são {5, 6}. Portanto:</p>
+<div class="formula"><big>P(número maior que 4) = 2/6 = 1/3 ≈ 33,3%</big></div>
+</section>
+
+<section class="panel" id="questionario">
+<h2>3. Questionário de aprendizagem</h2>
+<p class="intro">São 18 questões de múltipla escolha, organizadas por conteúdo. Marque uma alternativa em cada questão e clique em “Corrigir e analisar desempenho”. Você poderá ver o percentual de acertos, os assuntos mais fortes, os pontos que precisam de revisão e o gabarito comentado.</p>
+<div class="quiz-top"><strong id="answered">0 de 18 respondidas</strong><div class="progress" aria-label="Progresso do questionário"><div id="progressBar"></div></div></div>
+<form id="quiz"></form>
+<div class="buttons"><button class="btn primary" type="button" id="gradeBtn">Corrigir e analisar desempenho</button><button class="btn secondary" type="button" id="resetBtn">Refazer questionário</button></div>
+
+</section>
+
+<section class="panel results" id="resultado" aria-live="polite">
+<h2>4. Seu desempenho</h2>
+<div class="results-grid"><div><div class="pie" id="pie"><span class="pie-label" id="pieLabel">0%</span></div><p style="text-align:center"><strong>Percentual de acertos</strong></p></div><div><div class="metric" id="score">0 de 18</div><p id="summary"></p><div id="topicBars"></div></div></div>
+<h3>Estudo orientado</h3><div id="studyPlan"></div>
+</section>
+
+<section class="panel answer-key" id="gabarito">
+<h2>5. Gabarito comentado</h2>
+<p class="intro">Após corrigir, abra cada questão para revisar a resposta e entender o raciocínio.</p>
+<div id="answers"></div>
+</section>
+</main>
+<footer><strong>Curso Preparatório Professora Samanta</strong><br>Matemática • Capítulo 26 — Contagem e possibilidades<br><span class="small" style="color:#d5e3eb">Material de estudo e diagnóstico formativo.</span></footer>
+<script>
+const questions=[
+{topic:"Possibilidades e espaço amostral",level:"Básico",q:"1. O que são possibilidades em uma situação de contagem?",opts:["Somente os resultados que queremos obter","As diferentes opções ou resultados que podem ocorrer","A quantidade de vezes que um evento já aconteceu","A chance expressa sempre em porcentagem"],a:1,exp:"Possibilidades são as diferentes opções ou resultados que podem ocorrer. Por exemplo, uma moeda pode resultar em cara ou coroa."},
+{topic:"Possibilidades e espaço amostral",level:"Básico",q:"2. Qual é o espaço amostral de um lançamento de moeda, usando C para cara e K para coroa?",opts:["S = {C}","S = {K}","S = {C, K}","S = {CC, KK}"],a:2,exp:"O espaço amostral reúne todos os resultados possíveis. Em um único lançamento, são C e K."},
+{topic:"Árvore de possibilidades",level:"Básico",q:"3. Qual é a principal função de uma árvore de possibilidades?",opts:["Calcular áreas de figuras","Organizar visualmente as escolhas e seus resultados em etapas","Mostrar somente o resultado mais provável","Substituir todas as operações de multiplicação"],a:1,exp:"A árvore usa ramificações para mostrar as escolhas em cada etapa e ajudar a listar todos os resultados."},
+{topic:"Princípio Fundamental da Contagem",level:"Intermediário",q:"4. Em qual situação o PFC é especialmente útil?",opts:["Quando se quer calcular a área de um retângulo","Quando há escolhas sucessivas e se deseja contar as combinações sem listar uma a uma","Quando há apenas uma opção e nenhum resultado","Somente quando os resultados não são igualmente prováveis"],a:1,exp:"O PFC agiliza a contagem de combinações em etapas sucessivas, multiplicando o número de opções de cada etapa."},
+{topic:"Princípio Fundamental da Contagem",level:"Intermediário",q:"5. Uma moeda é lançada três vezes. Quantos resultados possíveis existem?",opts:["3","6","8","9"],a:2,exp:"Cada lançamento tem 2 possibilidades. Pelo PFC: 2 × 2 × 2 = 8 resultados."},
+{topic:"Possibilidade × probabilidade",level:"Básico",q:"6. Possibilidade e probabilidade significam a mesma coisa?",opts:["Sim, são sinônimos","Não. Possibilidades são opções/resultados; probabilidade mede a chance de um evento","Não. Probabilidade é sempre maior que 1","Sim, mas apenas em jogos com dados"],a:1,exp:"Possibilidade identifica o que pode ocorrer; probabilidade quantifica a chance de um evento acontecer."},
+{topic:"Probabilidade",level:"Intermediário",q:"7. Qual fórmula calcula a probabilidade de um evento quando todos os resultados são igualmente prováveis?",opts:["Total de resultados possíveis ÷ favoráveis","Favoráveis + possíveis","Favoráveis ÷ total de resultados possíveis","Favoráveis × total de resultados possíveis"],a:2,exp:"P(evento) = número de resultados favoráveis dividido pelo número total de resultados possíveis."},
+{topic:"Probabilidade",level:"Intermediário",q:"8. Um experimento tem 8 resultados possíveis e 2 são favoráveis ao evento. Qual é a probabilidade?",opts:["2/8 = 1/4 = 25%","8/2 = 4 = 400%","2/6 = 1/3","8/10 = 80%"],a:0,exp:"P = 2/8 = 1/4. Em porcentagem, 1/4 corresponde a 25%."},
+{topic:"Árvore de possibilidades",level:"Intermediário",q:"9. Quando uma árvore de possibilidades pode ser mais útil que o PFC?",opts:["Quando é importante visualizar e enumerar os resultados de cada etapa","Sempre, pois o PFC não funciona em etapas","Nunca, pois árvores não mostram resultados","Somente quando há mais de 100 resultados"],a:0,exp:"A árvore é útil para visualizar e listar os resultados. O PFC é mais rápido quando basta calcular o total de combinações."},
+{topic:"Princípio Fundamental da Contagem",level:"Intermediário",q:"10. Uma pessoa tem 4 camisetas e 3 calças. Escolhendo uma de cada, quantas combinações pode formar?",opts:["7","12","24","1"],a:1,exp:"Há duas etapas: 4 escolhas de camiseta e 3 de calça. Logo, 4 × 3 = 12 combinações."},
+{topic:"Princípio Fundamental da Contagem",level:"Intermediário",q:"11. Uma lanchonete oferece 3 sanduíches, 4 sucos e 2 sobremesas. Quantas refeições diferentes podem ser montadas escolhendo um item de cada categoria?",opts:["9","12","18","24"],a:3,exp:"Multiplicamos as opções das três etapas: 3 × 4 × 2 = 24 refeições."},
+{topic:"Princípio Fundamental da Contagem",level:"Intermediário",q:"12. Uma senha tem três algarismos: 4 opções para o primeiro, 5 para o segundo e 3 para o terceiro. As escolhas são independentes. Quantas senhas podem ser formadas?",opts:["12","20","60","125"],a:2,exp:"Pelo PFC: 4 × 5 × 3 = 60 senhas."},
+{topic:"Princípio Fundamental da Contagem",level:"Intermediário",q:"13. Uma viagem tem 3 opções de transporte, 4 de hospedagem e 2 de passeio. Escolhendo uma de cada, quantos roteiros existem?",opts:["9","12","24","36"],a:2,exp:"Cada roteiro combina uma escolha de cada categoria: 3 × 4 × 2 = 24."},
+{topic:"Probabilidade",level:"Intermediário",q:"14. Uma moeda equilibrada é lançada duas vezes. Qual é a probabilidade de sair cara nos dois lançamentos?",opts:["1/2","1/3","1/4","3/4"],a:2,exp:"O espaço amostral é {CC, CK, KC, KK}. Apenas CC tem cara nos dois lançamentos: 1 resultado favorável em 4, portanto 1/4 = 25%."},
+{topic:"Probabilidade",level:"Intermediário",q:"15. Usando o mesmo espaço amostral {CC, CK, KC, KK}, qual é a probabilidade de sair exatamente uma cara?",opts:["1/4","1/2","3/4","1"],a:1,exp:"Exatamente uma cara ocorre em CK e KC: 2 resultados favoráveis entre 4. Assim, 2/4 = 1/2 = 50%."},
+{topic:"Probabilidade",level:"Intermediário",q:"16. Um dado comum é lançado uma vez. Qual é a probabilidade de sair um número maior que 4?",opts:["1/6","1/3","1/2","2/3"],a:1,exp:"Os resultados maiores que 4 são 5 e 6. Há 2 favoráveis em 6 possíveis: 2/6 = 1/3."},
+{topic:"Princípio Fundamental da Contagem",level:"Avançado",q:"17. Uma placa tem duas letras e um algarismo. Cada letra tem 5 opções e o algarismo tem 4 opções. As letras podem se repetir. Quantas placas são possíveis?",opts:["14","25","50","100"],a:3,exp:"A primeira letra tem 5 opções, a segunda também 5, e o algarismo 4: 5 × 5 × 4 = 100 placas."},
+{topic:"Princípio Fundamental da Contagem",level:"Intermediário",q:"18. Uma estudante tem 3 blusas, 4 saias e 2 pares de sapatos. Quantos conjuntos completos pode montar escolhendo um item de cada categoria?",opts:["9","12","24","36"],a:2,exp:"Há três etapas: blusa, saia e sapatos. Total: 3 × 4 × 2 = 24 conjuntos."},
+{topic:"Princípio Fundamental da Contagem",level:"Avançado",q:"Se a quantidade de saias da questão anterior aumentar de 4 para 6, mantendo as demais opções, quantos conjuntos serão possíveis?",opts:["24","30","36","48"],a:2,exp:"Agora são 3 blusas × 6 saias × 2 pares de sapatos = 36 conjuntos."}
+];
+const topics=[...new Set(questions.map(q=>q.topic))];
+const quiz=document.getElementById('quiz');
+questions.forEach((q,i)=>{
+ const card=document.createElement('article');card.className='q-card';card.id='q'+i;
+ card.innerHTML=`<span class="topic-tag">${q.topic} · ${q.level}</span><div class="q-title">${i+1}. ${q.q.replace(/^\d+\.\s*/, '')}</div><div class="options">${q.opts.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"><span><strong>${String.fromCharCode(65+j)})</strong> ${o}</span></label>`).join('')}</div>`;
+ quiz.appendChild(card);
+});
+function updateProgress(){const n=questions.filter((q,i)=>quiz.querySelector(`input[name="q${i}"]:checked`)).length;document.getElementById('answered').textContent=`${n} de ${questions.length} respondidas`;document.getElementById('progressBar').style.width=(n/questions.length*100)+'%'}
+quiz.addEventListener('change',updateProgress);
+function grade(){
+ const responses=questions.map((q,i)=>{const el=quiz.querySelector(`input[name="q${i}"]:checked`);return el?Number(el.value):null});
+ const correct=responses.filter((v,i)=>v===questions[i].a).length;const pct=Math.round(correct/questions.length*100);
+ document.getElementById('score').textContent=`${correct} de ${questions.length} questões corretas`;
+ document.getElementById('pieLabel').textContent=pct+'%';
+ document.getElementById('pie').style.background=`conic-gradient(var(--teal) 0 ${pct*3.6}deg,#e5ebef ${pct*3.6}deg 360deg)`;
+ document.getElementById('summary').textContent=pct>=85?'Excelente resultado! Mantenha a prática e explique os conceitos com suas próprias palavras.':pct>=65?'Bom progresso. Revise os erros e refaça as questões em que teve dúvida.':'Use os erros como guia: retome a revisão por assunto e resolva exemplos semelhantes antes de tentar novamente.';
+ const stats=topics.map(topic=>{const ids=questions.map((q,i)=>q.topic===topic?i:-1).filter(i=>i>=0);const hits=ids.filter(i=>responses[i]===questions[i].a).length;return {topic,hits,total:ids.length,pct:Math.round(hits/ids.length*100)}});
+ document.getElementById('topicBars').innerHTML=stats.map(s=>`<div class="bar-row"><span>${s.topic}</span><div class="bar"><span style="width:${s.pct}%"></span></div><strong>${s.pct}%</strong></div>`).join('');
+ const ordered=[...stats].sort((a,b)=>a.pct-b.pct);const weakest=ordered.filter(s=>s.pct<70);const strongest=[...stats].sort((a,b)=>b.pct-a.pct).slice(0,2);
+ let plan='';if(weakest.length){plan+=weakest.map(s=>`<div class="study-item"><strong>Prioridade: ${s.topic} (${s.pct}%).</strong> ${s.topic.includes('Probabilidade')?'Releia a fórmula, identifique os resultados favoráveis e o total do espaço amostral; pratique moedas e dados e transforme frações em porcentagens.':s.topic.includes('Árvore')?'Desenhe as ramificações de cada etapa e confira se todos os resultados foram listados uma única vez.':s.topic.includes('Princípio')?'Separe as escolhas em etapas e multiplique o número de opções de cada etapa; confira os cálculos com uma árvore pequena.':'Revise a definição e dê exemplos próprios.'}</div>`).join('')}else{plan+='<div class="study-item"><strong>Não foi identificado um eixo abaixo de 70%.</strong> Faça uma revisão geral e tente explicar os métodos sem consultar o material.</div>'}
+ plan+=`<div class="study-item"><strong>Conteúdos com mais facilidade:</strong> ${strongest.map(s=>`${s.topic} (${s.pct}%)`).join('; ')}. Use esses tópicos para ensinar a si mesmo os passos de resolução.</div>`;
+ plan+='<div class="study-item"><strong>Roteiro sugerido de 30 minutos:</strong> 10 min de leitura da revisão; 10 min resolvendo dois exemplos por tópico prioritário; 10 min refazendo as questões erradas sem olhar o gabarito.</div>';
+ document.getElementById('studyPlan').innerHTML=plan;
+ document.getElementById('answers').innerHTML=questions.map((q,i)=>{const user=responses[i];return `<details class="answer"><summary>Questão ${i+1} — resposta correta: ${String.fromCharCode(65+q.a)} ${user===q.a?'✓':' '}</summary><div class="answer-body"><p><strong>Resposta:</strong> ${String.fromCharCode(65+q.a)}) ${q.opts[q.a]}</p><p>${q.exp}</p><p>${user===null?'<span class="small">Questão não respondida.</span>':user===q.a?'<span class="correct">Você acertou.</span>':'<span class="wrong">Sua resposta: '+String.fromCharCode(65+user)+'. Revise a explicação acima.</span>'}</p></div></details>`}).join('');
+ document.getElementById('resultado').style.display='block';document.getElementById('gabarito').style.display='block';document.getElementById('resultado').scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.getElementById('gradeBtn').addEventListener('click',grade);
+document.getElementById('resetBtn').addEventListener('click',()=>{quiz.reset();updateProgress();document.getElementById('resultado').style.display='none';document.getElementById('gabarito').style.display='none';document.getElementById('answers').innerHTML='';document.getElementById('questionario').scrollIntoView({behavior:'smooth'});});
+</script>
+</body>
+</html>
